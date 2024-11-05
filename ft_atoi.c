@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/04 14:39:12 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:00:55 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
 		i++;
-	if (nptr[i] == '-')
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		is_neg = -1;
+		if (nptr[i] == '-')
+			is_neg = -1;
 		i++;
 	}
 	while (ft_isdigit(nptr[i]))

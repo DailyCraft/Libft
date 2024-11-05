@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/04 14:48:37 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/05 14:57:04 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != c && *s)
+	while (*s != (char) c && *s)
 		s++;
-	if (*s == c)
+	if (*s == (char) c)
 		return ((char *) s);
 	return (NULL);
 }
