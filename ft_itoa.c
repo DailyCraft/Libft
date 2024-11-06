@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/05 12:21:28 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:23:14 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*ft_itoa(int n)
 
 	length = digit_count(n);
 	str = malloc((length + 1) * sizeof(char));
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	place_digits(n, str, length);
 	str[length] = 0;
