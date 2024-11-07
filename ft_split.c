@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/06 10:34:56 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:10:04 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	add_to_split(char const *s, char c, char **split)
 				return (0);
 			ft_memcpy(split[split_part], s + i, j);
 			split[split_part++][j] = 0;
-			i += j;
+			i += j - 1;
 		}
 		i++;
 	}
