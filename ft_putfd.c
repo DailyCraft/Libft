@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_putfd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/06 08:28:47 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/08 11:14:55 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, char const *set)
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*trim;
-	size_t	start;
-	size_t	end;
+	write(fd, &c, 1);
+}
 
-	start = 0;
-	while (s1[start] && ft_strchr(set, s1[start]) != NULL)
-		start++;
-	end = ft_strlen(s1);
-	while (ft_strchr(set, s1[end - 1]) != NULL)
-		end--;
-	if (s1[start] == 0)
-		return (ft_strdup(""));
-	trim = malloc((end - start + 1) * sizeof(char));
-	if (trim)
-		ft_strlcpy(trim, s1 + start, end - start + 1);
-	return (trim);
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}
+
+void	ft_putendl_fd(char *s, int fd)
+{
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == MIN_INT)
+	{
+		ft_putstr_fd("-2147483648", fd);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0', fd);
 }

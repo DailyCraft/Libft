@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_math.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/05 14:53:02 by dvan-hum         ###   ########.fr       */
+/*   Created: 2024/11/08 10:30:56 by dvan-hum          #+#    #+#             */
+/*   Updated: 2024/11/08 10:32:11 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_max(int a, int b)
 {
-	size_t	i;
+	if (a > b)
+		return (a);
+	return (b);
+}
 
-	i = 0;
-	while (i < n)
-	{
-		if (((char *) s)[i] == (char) c)
-			return ((void *) s + i);
-		i++;
-	}
-	return (NULL);
+int	ft_min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

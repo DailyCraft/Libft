@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/07 11:10:04 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:35:02 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,6 @@ static int	add_to_split(char const *s, char c, char **split)
 	return (1);
 }
 
-static void	free_split(char **split)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
@@ -74,8 +64,18 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (!add_to_split(s, c, split))
 	{
-		free_split(split);
+		ft_free_split(split);
 		return (NULL);
 	}
 	return (split);
+}
+
+void	ft_free_split(char **split)
+{
+	size_t	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }

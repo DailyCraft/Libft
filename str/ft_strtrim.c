@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/05 13:51:46 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/12 13:37:40 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_strtrim(char const *s1, const char *set)
 {
-	size_t	i;
+	char	*trim;
+	size_t	start;
+	size_t	end;
 
-	if (src < dest)
-	{
-		i = n;
-		while (i > 0)
-		{
-			((char *) dest)[i - 1] = ((char *) src)[i - 1];
-			i--;
-		}
-	}
-	else
-		ft_memcpy(dest, src, n);
-	return (dest);
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]) != NULL)
+		start++;
+	end = ft_strlen(s1);
+	while (ft_strchr(set, s1[end - 1]) != NULL)
+		end--;
+	if (s1[start] == 0)
+		return (ft_strdup(""));
+	trim = malloc((end - start + 1) * sizeof(char));
+	if (trim)
+		ft_strlcpy(trim, s1 + start, end - start + 1);
+	return (trim);
 }

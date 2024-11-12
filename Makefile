@@ -6,7 +6,7 @@
 #    By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 10:37:39 by dvan-hum          #+#    #+#              #
-#    Updated: 2024/11/06 10:37:42 by dvan-hum         ###   ########.fr        #
+#    Updated: 2024/11/12 14:06:21 by dvan-hum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,15 @@ NAME = libft.a
 
 CC = gcc -Wall -Wextra -Werror
 
-SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
-    ft_isdigit.c ft_isprint.c ft_itoa.c ft_memchr.c	ft_memcmp.c ft_memcpy.c \
-	ft_memmove.c ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
-	ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c ft_striteri.c \
-	ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
-	ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
-	ft_tolower.c ft_toupper.c
-SRC_BONUS = ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
-	ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
-	ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
-
-OBJ = $(SRC:.c=.o)
-OBJ_BONUS = $(SRC_BONUS:.c=.o)
+SRC = ft_bzero.c ft_calloc.c ft_char_alpha.c ft_char.c ft_lstget.c ft_lstput.c \
+	ft_math.c ft_mem.c ft_putfd.c \
+	conv/ft_antoi.c conv/ft_atoi.c conv/ft_itoa.c conv/ft_ultoa_base.c \
+	conv/ft_utoa_base.c \
+	str/ft_split.c str/ft_strcat.c str/ft_strchr.c str/ft_strcmp.c \
+	str/ft_strcpy.c str/ft_strdup.c str/ft_striteri.c str/ft_strjoin.c \
+	str/ft_strlen.c str/ft_strmapi.c str/ft_strnstr.c str/ft_strtrim.c \
+	str/ft_substr.c
+OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 INCLUDES = ./
 
 all: $(NAME)
@@ -34,16 +30,16 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-%.o: %.c
+./obj/%.o: %.c | ./obj
 	$(CC) -c $< -o $@ -I $(INCLUDES)
 
+./obj:
+	mkdir ./obj ./obj/conv ./obj/str
+
 clean: 
-	rm -f $(OBJ) $(OBJ_BONUS)
+	rm -rf ./obj
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: $(OBJ) $(OBJ_BONUS)
-	ar rcs $(NAME) $(OBJ) $(OBJ_BONUS)
