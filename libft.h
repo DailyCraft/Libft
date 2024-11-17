@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/12 13:51:39 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/17 20:45:05 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 // Memory
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);

@@ -6,41 +6,27 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/08 11:11:24 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/17 21:33:29 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*strcat(char *dest, const char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
-	size_t	len;
-	size_t	i;
-
-	len = ft_strlen(dest);
-	i = 0;
-	while (src[i])
-	{
-		dest[len + i] = src[i];
-		i++;
-	}
-	dest[len + i] = 0;
+	ft_strcpy(dest + ft_strlen(dest), src);
 	return (dest);
 }
 
-char	*strncat(char *dest, const char *src, size_t n)
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
 	size_t	len;
-	size_t	i;
+	char	*c;
 
 	len = ft_strlen(dest);
-	i = 0;
-	while (i < n && src[i])
-	{
-		dest[len + i] = src[i];
-		i++;
-	}
-	dest[len + i] = 0;
+	c = ft_memccpy(dest + len, src, 0, n);
+	if (!c)
+		dest[len + n] = 0;
 	return (dest);
 }
 
