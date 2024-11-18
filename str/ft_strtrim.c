@@ -6,13 +6,13 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/12 13:37:40 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:08:51 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*trim;
 	size_t	start;

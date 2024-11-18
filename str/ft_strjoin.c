@@ -6,13 +6,13 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/17 21:07:47 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:08:30 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*join;
 	size_t	s1_len;

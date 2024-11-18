@@ -6,13 +6,13 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/12 13:35:02 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:07:45 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_split(char const *s, char c)
+static int	count_split(const char *s, char c)
 {
 	int		count;
 	size_t	i;
@@ -28,7 +28,7 @@ static int	count_split(char const *s, char c)
 	return (count);
 }
 
-static int	add_to_split(char const *s, char c, char **split)
+static int	add_to_split(const char *s, char c, char **split)
 {
 	int		split_part;
 	size_t	i;
@@ -55,7 +55,7 @@ static int	add_to_split(char const *s, char c, char **split)
 	return (1);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**split;
 
