@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/14 16:23:21 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:34:46 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ int	ft_lstsize(t_list *lst)
 	if (!lst)
 		return (0);
 	return (1 + ft_lstsize(lst->next));
+}
+
+t_list	*ft_lstgeti(t_list *lst, int index)
+{
+	int	i;
+
+	i = 0;
+	while (lst)
+	{
+		if (index == i)
+			return (lst);
+		i++;
+		lst = lst->next;
+	}
+	return (NULL);
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -37,25 +52,21 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+int	ft_lstcontains(t_list *lst, void *content, int (*cmp)(void *, void *))
 {
-	t_list	*map;
-	void	*temp_content;
-	t_list	*temp_new;
-
-	map = NULL;
 	while (lst)
 	{
-		temp_content = f(lst->content);
-		temp_new = ft_lstnew(temp_content);
-		if (!temp_new)
+		if (cmp)
 		{
-			ft_lstclear(&map, del);
-			del(temp_content);
-			return (NULL);
+			if (cmp(lst->content, content) == 0)
+				return (1);
 		}
-		ft_lstadd_back(&map, temp_new);
+		else
+		{
+			if (lst->content == content)
+				return (1);
+		}
 		lst = lst->next;
 	}
-	return (map);
+	return (0);
 }

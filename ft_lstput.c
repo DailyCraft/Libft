@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/08 11:33:06 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:14:05 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,25 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		ft_lstlast(*lst)->next = new;
 }
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	del(lst->content);
-	free(lst);
-}
+	t_list	*map;
+	void	*temp_content;
+	t_list	*temp_new;
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*next;
-
-	while (*lst)
+	map = NULL;
+	while (lst)
 	{
-		next = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = next;
+		temp_content = f(lst->content);
+		temp_new = ft_lstnew(temp_content);
+		if (!temp_new)
+		{
+			ft_lstclear(&map, del);
+			del(temp_content);
+			return (NULL);
+		}
+		ft_lstadd_back(&map, temp_new);
+		lst = lst->next;
 	}
+	return (map);
 }
