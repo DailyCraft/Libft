@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 09:25:12 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:10:00 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,28 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	else
 		ft_memcpy(dest, src, n);
 	return (dest);
+}
+
+void	*ft_memdup(void *src, size_t size)
+{
+	void	*dest;
+
+	if (size == 0)
+		return (NULL);
+	dest = malloc(size);
+	if (dest)
+		ft_memcpy(dest, src, size);
+	return (dest);
+}
+
+void	*ft_memjoin(void *m1, size_t m1_len, void *m2, size_t m2_len)
+{
+	void	*join;
+
+	join = malloc(m1_len + m2_len);
+	if (!join)
+		return (NULL);
+	ft_memcpy(join, m1, m1_len);
+	ft_memcpy(join + m1_len, m2, m2_len);
+	return (join);
 }

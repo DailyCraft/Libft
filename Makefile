@@ -6,7 +6,7 @@
 #    By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 10:37:39 by dvan-hum          #+#    #+#              #
-#    Updated: 2024/11/18 11:16:50 by dvan-hum         ###   ########.fr        #
+#    Updated: 2024/11/18 14:20:44 by dvan-hum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libft.a
 CC = gcc -Wall -Wextra -Werror
 
 SRC = ft_char_alpha.c ft_char.c ft_lstdel.c ft_lstget.c ft_lstput.c ft_math.c \
-	ft_memcpy.c ft_memget.c ft_memset.c ft_putfd.c \
+	ft_memcpy.c ft_memget.c ft_memset.c ft_putfd.c get_next_line.c \
 	conv/ft_antoi.c conv/ft_atoi.c conv/ft_itoa.c conv/ft_ultoa_base.c \
 	conv/ft_utoa_base.c \
 	printf/ft_printf.c printf/parsing.c printf/printf_utils.c \
@@ -32,7 +32,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-./obj/%.o: %.c | ./obj
+./obj/%.o: ./src/%.c | ./obj
 	$(CC) -c $< -o $@ -I $(INCLUDES)
 
 ./obj:

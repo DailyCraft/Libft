@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 11:19:08 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:10:19 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,23 @@
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1024
+# endif
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_file_line
+{
+	int					fd;
+	char				*buf;
+	size_t				buf_len;
+	struct s_file_line	*next;
+}	t_file_line;
 
 // char
 int		ft_isascii(int c);
@@ -66,9 +78,12 @@ void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_memdup(void *src, size_t size);
+void	*ft_memjoin(void *m1, size_t m1_len, void *m2, size_t m2_len);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_free_set(void **ptr, void *new);
 
 // Math
 int		ft_max(int a, int b);
@@ -81,6 +96,9 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);
+
+// Reading
+char	*get_next_line(int fd);
 
 // Conversions
 int		ft_atoi(const char *str);

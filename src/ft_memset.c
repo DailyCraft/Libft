@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 09:25:20 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:09:55 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	if (mem)
 		ft_bzero(mem, nmemb * size);
 	return (mem);
+}
+
+void	*ft_free_set(void **ptr, void *new)
+{
+	free(*ptr);
+	*ptr = new;
+	return (new);
 }
