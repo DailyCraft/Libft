@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 14:10:19 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/25 09:24:42 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	*ft_free_set(void **ptr, void *new);
 // Math
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
+int		ft_rgb(int r, int g, int b);
 
 // Writing
 void	ft_putchar_fd(char c, int fd);
@@ -107,6 +108,7 @@ int		ft_antoi(const char *nptr, size_t len);
 int		ft_antoi_base(const char *str, size_t len, const char *base);
 char	*ft_utoa_base(unsigned int n, char *base);
 char	*ft_ultoa_base(unsigned long n, char *base);
+double	ft_atof(const char *str);
 
 // Lists
 t_list	*ft_lstnew(void *content);
