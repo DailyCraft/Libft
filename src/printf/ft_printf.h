@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:48:18 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 11:00:50 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:59:49 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ typedef struct s_printf_spec
 void			*ft_or(void *value, void *or_value);
 char			*add_pre(char *out, int *len, char *pre);
 char			*add_post(char *out, int *len, char *post);
+int				printf_post(char **out, int len, char *post, int post_len);
+int				write_spec(int fd, t_printf_spec *next, va_list *args);
 
 t_printf_spec	*get_next_spec(const char *format, va_list *args);
-int				write_spec(int fd, t_printf_spec *spec, va_list *args);
+int				parse_spec(t_printf_spec *spec, va_list *args, char **out);
 
 char			*p_type(va_list *args);
 void			precisition_idx(t_printf_spec *spec, char **out, int *len);

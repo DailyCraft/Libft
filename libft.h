@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/25 09:24:42 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:01:01 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);
+int		ft_asprintf(char **strp, const char *format, ...);
 
 // Reading
 char	*get_next_line(int fd);

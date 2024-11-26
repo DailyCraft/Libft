@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:11:50 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/13 08:23:58 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:17:23 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ char	*add_pre(char *out, int *len, char *pre)
 	size_t	pre_len;
 
 	pre_len = ft_strlen(pre);
-	join = malloc((*len + pre_len + 1) * sizeof(char));
+	join = ft_memjoin(pre, pre_len, out, *len);
 	if (!join)
 		return (NULL);
-	ft_memcpy(join, pre, pre_len);
-	ft_memcpy(join + pre_len, out, *len);
 	free(out);
 	*len += pre_len;
 	return (join);
@@ -41,12 +39,30 @@ char	*add_post(char *out, int *len, char *post)
 	size_t	post_len;
 
 	post_len = ft_strlen(post);
-	join = malloc((*len + post_len + 1) * sizeof(char));
+	join = ft_memjoin(out, *len, post, post_len);
 	if (!join)
 		return (NULL);
-	ft_memcpy(join, out, *len);
-	ft_memcpy(join + *len, post, post_len);
 	free(out);
 	*len += post_len;
 	return (join);
+}
+
+int	printf_post(char **out, int len, char *post, int post_len)
+{
+	char	*join;
+
+	join = ft_memjoin(*out, len, post, post_len);
+	ft_free_set((void **) out, join);
+	return (post_len);
+}
+
+int	write_spec(int fd, t_printf_spec *next, va_list *args)
+{
+	int		len;
+	char	*spec;
+
+	len = parse_spec(next, args, &spec);
+	write(fd, spec, len);
+	free(spec);
+	return (len);
 }

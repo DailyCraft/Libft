@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:13:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/13 09:05:27 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/11/26 09:33:02 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static size_t	define_flags(t_printf_spec *spec, const char *fmt, size_t len)
 	return (i);
 }
 
-static t_printf_spec	*parse_spec(char *format, size_t len, va_list *args)
+static t_printf_spec	*get_spec(char *format, size_t len, va_list *args)
 {
 	t_printf_spec	*spec;
 	size_t			i;
@@ -97,15 +97,14 @@ t_printf_spec	*get_next_spec(const char *format, va_list *args)
 	{
 		spec_len = is_spec(format + i);
 		if (spec_len != 0)
-			return (parse_spec((char *) format + i, spec_len, args));
+			return (get_spec((char *) format + i, spec_len, args));
 		i++;
 	}
 	return (NULL);
 }
 
-int	write_spec(int fd, t_printf_spec *spec, va_list *args)
+int	parse_spec(t_printf_spec *spec, va_list *args, char **out)
 {
-	char	*out;
 	int		len;
 	int		width_first;
 
@@ -114,18 +113,16 @@ int	write_spec(int fd, t_printf_spec *spec, va_list *args)
 		ft_putchar_fd('%', 1);
 		return (1);
 	}
-	out = NULL;
-	len = out_type(spec, args, &out);
+	*out = NULL;
+	len = out_type(spec, args, out);
 	if (spec->precision != -1)
-		out_precisition(spec, &out, &len);
+		out_precisition(spec, out, &len);
 	width_first = spec->flags & ZEROES_PADS && spec->precision == -1;
 	if (spec->width > len && width_first)
-		out_width(spec, &out, &len);
-	out_force_sign(spec, &out, &len);
-	out_specified_type(spec, &out, &len);
+		out_width(spec, out, &len);
+	out_force_sign(spec, out, &len);
+	out_specified_type(spec, out, &len);
 	if (spec->width > len && !width_first)
-		out_width(spec, &out, &len);
-	write(fd, out, len);
-	free(out);
+		out_width(spec, out, &len);
 	return (len);
 }
