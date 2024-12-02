@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:48:18 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/26 09:59:49 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:42:30 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <libft.h>
+# include "libft.h"
 
 enum e_printf_flags
 {
@@ -36,7 +36,6 @@ typedef struct s_printf_spec
 	char		type;
 }	t_printf_spec;
 
-void			*ft_or(void *value, void *or_value);
 char			*add_pre(char *out, int *len, char *pre);
 char			*add_post(char *out, int *len, char *post);
 int				printf_post(char **out, int len, char *post, int post_len);

@@ -6,26 +6,30 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/08 11:14:55 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:29:01 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+ssize_t	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	return (write(fd, &c, 1));
 }
 
-void	ft_putstr_fd(char *s, int fd)
+ssize_t	ft_putstr_fd(char *s, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	return (write(fd, s, ft_strlen(s)));
 }
 
-void	ft_putendl_fd(char *s, int fd)
+ssize_t	ft_putendl_fd(char *s, int fd)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	ssize_t	size;
+
+	size = ft_putstr_fd(s, fd);
+	if (size >= 0)
+		size += ft_putchar_fd('\n', fd);
+	return (size);
 }
 
 void	ft_putnbr_fd(int n, int fd)

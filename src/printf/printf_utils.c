@@ -6,18 +6,11 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:11:50 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/26 10:17:23 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:40:56 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	*ft_or(void *value, void *or_value)
-{
-	if (value)
-		return (value);
-	return (or_value);
-}
 
 char	*add_pre(char *out, int *len, char *pre)
 {
@@ -49,10 +42,8 @@ char	*add_post(char *out, int *len, char *post)
 
 int	printf_post(char **out, int len, char *post, int post_len)
 {
-	char	*join;
-
-	join = ft_memjoin(*out, len, post, post_len);
-	ft_free_set((void **) out, join);
+	ft_free_set((void **) out,
+		ft_memjoin(*out, len, post, post_len));
 	return (post_len);
 }
 
@@ -61,8 +52,7 @@ int	write_spec(int fd, t_printf_spec *next, va_list *args)
 	int		len;
 	char	*spec;
 
-	len = parse_spec(next, args, &spec);
-	write(fd, spec, len);
+	len = write(fd, spec, parse_spec(next, args, &spec));
 	free(spec);
 	return (len);
 }

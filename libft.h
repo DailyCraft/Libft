@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/02 13:02:23 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:41:25 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,15 @@ void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_free_set(void **ptr, void *new);
 
 // Math
+void	*ft_or(void *value, void *or_value);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 int		ft_rgb(int r, int g, int b);
 
 // Writing
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
+ssize_t	ft_putchar_fd(char c, int fd);
+ssize_t	ft_putstr_fd(char *s, int fd);
+ssize_t	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_dprintf(int fd, const char *format, ...);
 int		ft_printf(const char *format, ...);

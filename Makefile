@@ -6,13 +6,13 @@
 #    By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 10:37:39 by dvan-hum          #+#    #+#              #
-#    Updated: 2024/11/25 09:26:58 by dvan-hum         ###   ########.fr        #
+#    Updated: 2024/12/02 21:19:40 by dvan-hum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc -Wall -Wextra -Werror -O3
 
 SRC = ft_char_alpha.c ft_char.c ft_lstdel.c ft_lstget.c ft_lstput.c ft_math.c \
 	ft_memcpy.c ft_memget.c ft_memset.c ft_putfd.c get_next_line.c \

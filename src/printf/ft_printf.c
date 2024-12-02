@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:49:50 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/26 10:14:07 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 21:33:28 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ static int	write_printf(int fd, const char *format, va_list *args)
 		}
 		else
 		{
-			ft_putstr_fd((char *) format, fd);
-			len += ft_strlen(format);
+			len += ft_putstr_fd((char *) format, fd);
 			break ;
 		}
 	}
