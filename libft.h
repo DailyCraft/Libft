@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/26 10:01:01 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:02:23 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int		ft_lstcontains(t_list *lst, void *content, int (*cmp)(void *, void *));
 t_list	*ft_lstgeti(t_list *lst, int index);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
+t_list	*ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 int		ft_lstdeli(t_list **lst, int index, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
