@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/15 16:34:46 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:19:55 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,22 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 	}
 }
 
-int	ft_lstcontains(t_list *lst, void *content, int (*cmp)(void *, void *))
+int	ft_lstindex(t_list *lst, void *content, int (*cmp)(void *, void *))
 {
+	int	i;
+
+	i = 0;
 	while (lst)
 	{
 		if (cmp)
 		{
 			if (cmp(lst->content, content) == 0)
-				return (1);
+				return (i);
 		}
-		else
-		{
-			if (lst->content == content)
-				return (1);
-		}
+		else if (lst->content == content)
+			return (i);
 		lst = lst->next;
+		i++;
 	}
-	return (0);
+	return (-1);
 }

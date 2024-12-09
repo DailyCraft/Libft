@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/02 21:41:25 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:15:28 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	*ft_free_set(void **ptr, void *new);
 
 // Math
 void	*ft_or(void *value, void *or_value);
+int		ft_abs(int a);
 int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 int		ft_rgb(int r, int g, int b);
@@ -116,7 +117,7 @@ double	ft_atof(const char *str);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
-int		ft_lstcontains(t_list *lst, void *content, int (*cmp)(void *, void *));
+int		ft_lstindex(t_list *lst, void *content, int (*cmp)(void *, void *));
 t_list	*ft_lstgeti(t_list *lst, int index);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
