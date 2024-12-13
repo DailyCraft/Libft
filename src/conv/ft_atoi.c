@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/12 13:28:37 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/13 19:42:50 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,35 @@
 
 int	ft_atoi(const char *str)
 {
-	int		result;
-	int		is_neg;
-	size_t	i;
+	int	unclear;
+
+	return (ft_clear_atoi(str, &unclear));
+}
+
+int	ft_clear_atoi(const char *str, int *unclear)
+{
+	unsigned int	result;
+	int				neg;
 
 	result = 0;
-	is_neg = 1;
-	i = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+	neg = 1;
+	*unclear = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		if (str[i] == '-')
-			is_neg = -1;
-		i++;
+		if (*str == '-')
+			neg = -1;
+		str++;
 	}
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(*str))
 	{
-		result = result * 10 + (str[i] - '0');
-		i++;
+		result = result * 10 + *str - '0';
+		if (result > (unsigned) MAX_INT + (neg == -1) && *unclear == 0)
+			*unclear = 2;
+		str++;
 	}
-	return (result * is_neg);
+	if (*str)
+		*unclear += 1;
+	return (result * neg);
 }

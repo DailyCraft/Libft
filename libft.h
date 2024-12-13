@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/09 08:15:28 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:14:33 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char	*get_next_line(int fd);
 
 // Conversions
 int		ft_atoi(const char *str);
+int		ft_clear_atoi(const char *str, int *unclear);
 char	*ft_itoa(int n);
 int		ft_antoi(const char *nptr, size_t len);
 int		ft_antoi_base(const char *str, size_t len, const char *base);
