@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/13 19:42:50 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:31:41 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_clear_atoi(const char *str, int *unclear)
 			neg = -1;
 		str++;
 	}
+	if (!*str)
+		return (*unclear = 1, 0);
 	while (ft_isdigit(*str))
 	{
 		result = result * 10 + *str - '0';
@@ -42,7 +44,6 @@ int	ft_clear_atoi(const char *str, int *unclear)
 			*unclear = 2;
 		str++;
 	}
-	if (*str)
-		*unclear += 1;
+	*unclear += *str != 0;
 	return (result * neg);
 }
