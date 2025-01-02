@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/13 21:14:33 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/02 15:13:40 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_btree
+{
+	void			*content;
+	struct s_btree	*left;
+	struct s_btree	*right;
+}	t_btree;
 
 typedef struct s_file_line
 {
@@ -127,5 +134,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 int		ft_lstdeli(t_list **lst, int index, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// Binary trees
+t_btree	*ft_btree_new(void *content);
+void	ft_btree_clear(t_btree **btree, void (*del)(void *));
 
 #endif

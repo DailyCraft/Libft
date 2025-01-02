@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 14:41:25 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/02 13:10:54 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:45:28 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ft_lstdeli(t_list **lst, int index, void (*del)(void *))
 			return (1);
 		}
 		i++;
+		lst = &(*lst)->next;
 	}
 	return (0);
 }

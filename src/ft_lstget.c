@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/12/09 08:19:55 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/02 13:46:02 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_list	*ft_lstgeti(t_list *lst, int index)
 	i = 0;
 	while (lst)
 	{
-		if (index == i)
+		if (i == index)
 			return (lst);
 		i++;
 		lst = lst->next;

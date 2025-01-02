@@ -6,7 +6,7 @@
 #    By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 10:37:39 by dvan-hum          #+#    #+#              #
-#    Updated: 2024/12/13 22:11:52 by dvan-hum         ###   ########.fr        #
+#    Updated: 2025/01/02 14:09:32 by dvan-hum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = libft.a
 
 CC = gcc -Wall -Wextra -Werror -O3
 
-SRC = ft_char_alpha.c ft_char.c ft_lstdel.c ft_lstget.c ft_lstput.c ft_math.c \
-	ft_memcpy.c ft_memget.c ft_memset.c ft_putfd.c get_next_line.c \
+SRC = ft_btree.c ft_char_alpha.c ft_char.c ft_lstdel.c ft_lstget.c ft_lstput.c \
+	ft_math.c ft_memcpy.c ft_memget.c ft_memset.c ft_putfd.c get_next_line.c \
 	conv/ft_antoi.c conv/ft_atof.c conv/ft_atoi.c conv/ft_itoa.c \
 	conv/ft_ultoa_base.c conv/ft_utoa_base.c \
 	printf/ft_printf.c printf/parsing.c printf/printf_utils.c \
