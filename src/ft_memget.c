@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 20:38:38 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/17 20:39:24 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:47:52 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,19 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void *) s + i);
 		i++;
 	}
+	return (NULL);
+}
+
+char	*ft_memrchr(const void *s, int c, size_t n)
+{
+	size_t	i;
+
+	if (n == 0)
+		return (NULL);
+	i = n - 1;
+	while (((char *) s)[i] != (char) c && i > 0)
+		i--;
+	if (((char *) s)[i] == (char) c)
+		return ((void *) s + i);
 	return (NULL);
 }

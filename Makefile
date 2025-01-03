@@ -6,7 +6,7 @@
 #    By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/06 10:37:39 by dvan-hum          #+#    #+#              #
-#    Updated: 2025/01/02 14:09:32 by dvan-hum         ###   ########.fr        #
+#    Updated: 2025/01/03 10:49:26 by dvan-hum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC = ft_btree.c ft_char_alpha.c ft_char.c ft_lstdel.c ft_lstget.c ft_lstput.c \
 	str/ft_strlen.c str/ft_strmapi.c str/ft_strnstr.c str/ft_strtrim.c \
 	str/ft_substr.c
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
+HEADERS = libft.h
 INCLUDES = ./
 
 ifndef VERBOSE
@@ -37,7 +38,7 @@ $(NAME): $(OBJ)
 	echo "\n\t\e[1;32mBuilding\e[0m \e[36m$(NAME)\e[0m\n"
 	ar rcs $(NAME) $(OBJ)
 
-./obj/%.o: ./src/%.c
+./obj/%.o: ./src/%.c $(HEADERS)
 	echo "$(NAME) \e[90m➤\e[0m \e[32mCompiling\e[0m \e[36m$<\e[0m"
 	mkdir -p $(dir $@)
 	$(CC) -c $< -o $@ -I $(INCLUDES)

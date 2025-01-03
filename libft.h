@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:25:41 by dvan-hum          #+#    #+#             */
-/*   Updated: 2025/01/03 08:54:42 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:48:23 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memdup(void *src, size_t size);
 void	*ft_memjoin(void *m1, size_t m1_len, void *m2, size_t m2_len);
 void	*ft_memchr(const void *s, int c, size_t n);
+char	*ft_memrchr(const void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_free_set(void **ptr, void *new);
