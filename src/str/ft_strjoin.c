@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvan-hum <dvan-hum@student.42perpignan.    +#+  +:+       +#+        */
+/*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:23:23 by dvan-hum          #+#    #+#             */
-/*   Updated: 2024/11/18 11:08:30 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:56:23 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,29 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
-	char	*join;
-	size_t	s1_len;
-	size_t	s2_len;
+	return (ft_strsjoin((const char *[]){s1, s2, NULL}));
+}
 
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	join = malloc((s1_len + s2_len + 1) * sizeof(char));
+char	*ft_strsjoin(const char **strs)
+{
+	char	*join;
+	int		i;
+	size_t	len;
+
+	i = 0;
+	len = 0;
+	while (strs[i])
+		len += ft_strlen(strs[i++]);
+	join = malloc((len + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
-	ft_strcpy(join, s1);
-	ft_strcpy(join + s1_len, s2);
+	i = 0;
+	len = 0;
+	while (strs[i])
+	{
+		ft_strcpy(join + len, strs[i]);
+		len += ft_strlen(strs[i]);
+		i++;
+	}
 	return (join);
 }
