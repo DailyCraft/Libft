@@ -6,7 +6,7 @@
 /*   By: dvan-hum <dvan-hum@student.42perpignan.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 13:02:33 by cgrasser          #+#    #+#             */
-/*   Updated: 2025/01/02 15:13:46 by dvan-hum         ###   ########.fr       */
+/*   Updated: 2025/01/07 14:20:59 by dvan-hum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ t_btree	*ft_btree_new(void *content)
 
 void	ft_btree_clear(t_btree **btree, void (*del)(void *))
 {
-	if ((*btree)->left)
-		ft_btree_clear(&(*btree)->left, del);
-	if ((*btree)->right)
-		ft_btree_clear(&(*btree)->right, del);
+	if (!*btree)
+		return ;
+	ft_btree_clear(&(*btree)->left, del);
+	ft_btree_clear(&(*btree)->right, del);
 	if (del)
 		del((*btree)->content);
 	ft_free_set((void **) btree, NULL);
